@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My to do List</title>
+    <!--font google fonts Quintessential-->
+    <link href="https://fonts.googleapis.com/css?family=Quintessential:wght@400;500&display=swap" rel="stylesheet">
+	<!--font awesome to get icons-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+    <link rel="stylesheet" href="./styles.css">
+</head>
+
+<body>
+    <header>
+        <!-- here is title of what kind of content can by used-->
+        <h1 id=h1move>What should I do?</h1>
+    </header>
+	<div class="addItems-container">
+        <h1 class="addItems-title">Add to do item</h1>
+		<h2 class="addItems-action">Notification</h2>	    
+        <form>
+            <input  placeholder="What needs to be done?" type="text" class="list-input">
+            <button type="submit" class="add-button">
+                <span>Add</span>
+            </button>
+        </form>
+	</div>
+    <!-- display items-->
+    <div class="displayItems-container">
+        <div class="todo-container">
+            <ul class="item-list">
+
+            </ul>
+        </div>
+	</div>
+
+<footer>
+    <ul class=ulfooter>
+        <li class=lifooter>
+        <div class="select">
+            <select class="select-todo">
+                <option value="all">Display all</option>
+                <option value="completed">Display completed</option>
+                <option value="active">Display active</option>
+            </select>
+        </div>
+		<div id="counter"></div>
+        </li>
+        <li class=lifooter>
+        <div> 
+            <button onclick="showDatetoday();" class="getDate">Date today</button>
+        </div>
+        </li>
+        <li class=lifooter>
+            <div> 
+                <button onclick="getLocation();" class="getDate">Location</button>
+            </div>
+            </li>
+    </ul>
+</footer>          
+    <script src="./app.js"></script>
+</body>
+
+</html>
