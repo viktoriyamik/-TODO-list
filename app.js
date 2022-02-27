@@ -102,7 +102,11 @@ function deleteOrComplete(event) {
 // add value  that was checked to localstorage 'checked'
 function addCheck(value) {
     let checked;
-    checked = JSON.parse(localStorage.getItem('checked')); // transform localstorage 'checked' from JSON to array 'checked'
+    if (localStorage.getItem('checked') === null){ // localstorage 'checked' is empty
+        checked =[]; // create empty array
+    } else {
+        checked = JSON.parse(localStorage.getItem('checked')); // get localstorage 'checked', tranform itfrom JSON to array 'checked'
+    }
     checked.push(value);
     localStorage.setItem('checked', JSON.stringify(checked));
 	//console.log(checked)
@@ -112,8 +116,11 @@ function addCheck(value) {
 function deleteCheck(value) {
     let checked;
     // read array from localstorage
-    checked = JSON.parse(localStorage.getItem('checked')); // transform localstorage 'checked' from JSON to array 'checked'
-
+    if (localStorage.getItem('checked') === null){ // localstorage 'checked' is empty
+        checked =[]; // create empty array
+    } else {
+        checked = JSON.parse(localStorage.getItem('checked')); // get localstorage 'checked', tranform itfrom JSON to array 'checked'
+    }
     checked.splice(checked.indexOf(value), 1); // delete value from array "checked" using index checked.indexOf(value), 
                                                // splice deletes from array by index, second argument is how many entries to delete
     localStorage.setItem('checked', JSON.stringify(checked)); // write to localstorage in JSON format
@@ -174,7 +181,11 @@ function countActive() {
 // save item to localstorage
 function saveLocalEntry(item) {
     let list;
-    list = JSON.parse(localStorage.getItem('list')); // transform localstorage 'list' from JSON to array 'list'
+    if (localStorage.getItem('list') === null){ // localstorage 'list' is empty
+        list =[]; // create empty array
+    } else {
+        list = JSON.parse(localStorage.getItem('list')); // get localstorage 'list', tranform it from JSON to array 'list'
+    }
     list.push(item); // write item to array
     localStorage.setItem('list', JSON.stringify(list)); // transform array 'list' to JSON format and save it to localstorage 'list'
 	//console.log(list)
@@ -185,11 +196,16 @@ function displayList() {
 	//event.preventDefault();
     let list; // list to store all items
 	let checked; // list to store checked items
-
-    list = JSON.parse(localStorage.getItem('list')); // transform localstorage 'list' from JSON to array 'list'
-
-    checked = JSON.parse(localStorage.getItem('checked')); // transform localstorage 'checked' from JSON to array 'checked'
-
+    if (localStorage.getItem('list') === null){ // localstorage 'list' is empty
+        list =[]; // create empty array
+    } else {
+        list = JSON.parse(localStorage.getItem('list')); // get localstorage 'list', tranform it from JSON to array 'list'
+    }
+    if (localStorage.getItem('checked') === null){ // localstorage 'checked' is empty
+        checked =[]; // create empty array
+    } else {
+        checked = JSON.parse(localStorage.getItem('checked')); // get localstorage 'checked', tranform itfrom JSON to array 'checked'
+    }
 	//console.log(list);
 	//console.log(checked);
     list.forEach(function (item) {
@@ -212,8 +228,11 @@ function displayList() {
 // 
 function checkUnique(value) {
     let list;
-
-    list = JSON.parse(localStorage.getItem('list')); // transform localstorage 'list' to array 'list'
+    if (localStorage.getItem('list') === null){ // localstorage 'list' is empty
+        list =[]; // create empty array
+    } else {
+        list = JSON.parse(localStorage.getItem('list')); // get localstorage 'list', tranform itfrom JSON to array 'list'
+    }
     // check value exists in array "list"
     if (list.indexOf(value) > -1) { // index is greater than -1, it found value in array "list"
         return true;
@@ -225,9 +244,11 @@ function checkUnique(value) {
 // delete one item from localstorage 'list' 
 function deleteLocalStorageItem(item){
     let list;
-
-    list = JSON.parse(localStorage.getItem('list')); // get localstorage 'list', tranform itfrom JSON to array 'list'
-
+    if (localStorage.getItem('list') === null){ // localstorage 'list' is empty
+        list =[]; // create empty array
+    } else {
+        list = JSON.parse(localStorage.getItem('list')); // get localstorage 'list', tranform itfrom JSON to array 'list'
+    }
     // get text content of item
 	const itemTextContent = item.textContent;
 	// delete from Array element with the specified text
