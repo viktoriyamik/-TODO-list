@@ -66,13 +66,13 @@ function addToList(event) {
 		filterItems(); // filter items
 	}
 }
-
+// delete item/entry from the list or complete the item/entry in the list
 function deleteOrComplete(event) {
     const item = event.target;
     const entry = item.parentElement;
     let value = entry.textContent;
     // delete entry
-    if (item.classList[0] === 'delete-btn') {
+    if (item.classList[0] === 'delete-btn') { // delete button was clicked
         deleteLocalStorageItem(entry);
         //console.log(entry);
         entry.remove(); // remove from UL list the entry with div that has class 'item'
@@ -83,7 +83,7 @@ function deleteOrComplete(event) {
 	    displayNotification(addNotification, `Item ${value} deleted from the list`, true);
     }
     // complete entry, make it checked - strikethrough
-    if (item.classList[0] === 'check-btn') {
+    if (item.classList[0] === 'check-btn') { // check button was clicked
         entry.classList.toggle('checked'); // add the class if it does not exist, remove the class if it exists
 		//console.log(entry.classList);
 		// add or remove from localstorage "checked"
@@ -121,8 +121,9 @@ function deleteCheck(value) {
     } else {
         checked = JSON.parse(localStorage.getItem('checked')); // get localstorage 'checked', tranform itfrom JSON to array 'checked'
     }
-    checked.splice(checked.indexOf(value), 1); // delete value from array "checked" using index checked.indexOf(value), 
-                                               // splice deletes from array by index, second argument is how many entries to delete
+    // delete value from array "checked" using index checked.indexOf(value), 
+    // splice deletes from array by index, second argument is how many entries to delete
+    checked.splice(checked.indexOf(value), 1); 
     localStorage.setItem('checked', JSON.stringify(checked)); // write to localstorage in JSON format
 	//console.log(checked)
 }
@@ -225,7 +226,7 @@ function displayList() {
 	countActive();
 }
 
-// 
+// check if value exists in the list, return true if exists, otherwise return false
 function checkUnique(value) {
     let list;
     if (localStorage.getItem('list') === null){ // localstorage 'list' is empty
